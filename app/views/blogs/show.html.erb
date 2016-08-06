@@ -11,7 +11,7 @@
 <% @blog_posts.each do |blog_post| %>
 	<p>
 	  <strong>Blog:</strong>
-	  <%= blog_post.title %>
+	  <%= link_to blog_post.title, blog_post %>
 	</p>
 
 	<p>
