@@ -1,5 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :post_owner, only: [:edit, :update, :destroy]
+
+  def post_owner
+    unless @post.blog.user == current_user
+      flash[:notice] = 'Access denied, you are not the owner of this Post.'
+      redirect_to @post
+     end
+  end
 
   def index
     @posts = Post.all
@@ -14,6 +22,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+  	@blogs = Blog.all
   end
 
   def create

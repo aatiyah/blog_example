@@ -2,10 +2,10 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :blog_owner, only: [:edit, :update, :destroy]
 
-  def event_owner
+  def blog_owner
     unless @blog.user == current_user
-      flash[:notice] = 'Access denied as you are not owner of this Event.'
-      redirect_to @event
+      flash[:notice] = 'Access denied, you are not the owner of this Blog.'
+      redirect_to @blog
      end
   end
 
@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    @blog.user == current_user
+    @blog.user = current_user
 
     respond_to do |format|
       if @blog.save
