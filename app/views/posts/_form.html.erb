@@ -1,31 +1,39 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<% if current_user.blogs.empty? %>
+	<p>You Need to create a <%= link_to 'Blog', new_blog_path %> before you can create a Post.</p>	
+<% else %>
+	<%= form_for(@post) do |f| %>
+	  <% if @post.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	      <ul>
+	      <% @post.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
-  </div>
+	  <div class="field">
+	    <%= f.label :title %><br>
+	    <%= f.text_field :title %>
+	  </div>
+	  
+	  <div class="field">
+	    <%= f.label :content %><br>
+	    <%= f.text_field :content %>
+	  </div>
 
-  <div class="form-group">
-    <%= f.select(:blog_id, @blogs.collect {|c| [c.name, c.id]}, {include_blank: "Please Select a Blog"}) %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+	    <%= f.select(:blog_id,current_user.blogs, {include_blank: "Select a Blog"}) do %>
+	        <% current_user.blogs.pluck(:name, :id).each do |c| %>
+	            <%= content_tag(:option, c.first, value: c.last) %>
+	        <% end %>
+	    <% end %>
+
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
 <% end %>
