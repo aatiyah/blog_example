@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def show
+  	@user = @post.blog.user
   end
 
   def new
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
   def create
   	@post = Post.new(post_params)
   	@blogs = Blog.all
+  	@post.blog.user = current_user
 
     respond_to do |format|
       if @post.save
@@ -66,6 +68,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :blog_id)
+      params.require(:post).permit(:title, :content, :blog_id, :user_id)
     end
 end

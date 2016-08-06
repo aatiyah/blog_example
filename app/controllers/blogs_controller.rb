@@ -15,6 +15,15 @@ class BlogsController < ApplicationController
 
   def show
   	@user = @blog.user
+  	@blog = Blog.find(params[:id])
+  	@post = Post.all 
+  	@blog_posts = []
+
+  	@post.each do |post|
+  		if post.blog == @blog
+  			@blog_posts.push(post)
+  		end
+  	end
   end
 
   def new
