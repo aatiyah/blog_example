@@ -1,6 +1,12 @@
 <div class="text-center" id="blog_index">
-	<h1 class="page-title text-capitalize text-primary">All blogs</h1>
+	<h1 class="page-title text-capitalize text-primary" id="home_title">Publish your own blog in seconds</h1>
+
+	<% if !user_signed_in? %>
+		<p><%= link_to "Start Now", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-success' %></p>
+	<% end %>
+
 	<hr width="50%">
+
   <% @blogs.each do |blog| %>
 	  <h3 class="page-title text-capitalize">Blog: <%= link_to blog.name, blog %></h3>
 	  <h4 class="text-capitalize"><em>by:</em> <%= blog.user.name %></h4>
@@ -18,6 +24,4 @@
 		<% end %>
 		<hr width="40%">
 	<% end %>	
-	
-	<p><%= link_to 'New Blog', new_blog_path, class: "btn btn-primary btn-large" %></p>
 </div>

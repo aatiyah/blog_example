@@ -20,20 +20,21 @@
 	  </div>
 	  
 	  <div class="form-group">
-	    <%= f.label :content %><br>
+	    <%= f.label :content %> <em class="text-muted">(Markdown Supported) </em> <br>
 	    <%= f.text_area :content, class: "form-control" %>
 	  </div>
 
 
 
-	    <%= f.select(:blog_id,current_user.blogs, {include_blank: "Select a Blog"}) do %>
+	    <%= f.select(:blog_id,current_user.blogs, {include_blank: "Select a Blog"}, {class: "form-control"}) do %>
 	        <% current_user.blogs.pluck(:name, :id).each do |c| %>
 	            <%= content_tag(:option, c.first, value: c.last) %>
 	        <% end %>
 	    <% end %>
 
 	  <div class="actions">
-	    <%= f.submit %>
+	  <hr>
+	    <%= f.submit class: "btn btn-primary pull-left" %>
 	  </div>
 	<% end %>
 <% end %>

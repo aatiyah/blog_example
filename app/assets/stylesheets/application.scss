@@ -30,6 +30,10 @@ body {
 	padding-right: 15%;
 }
 
+textarea.form-control {
+	height: 300px !important;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'pygments';

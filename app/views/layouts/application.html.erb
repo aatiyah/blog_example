@@ -6,11 +6,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-  	$(function ()	{ 
-  		$("#myModal").modal({show:false }); 
-  	});	
-  </script>
 </head>
 <body>
 	<%= render "shared/login_modal" %>
@@ -24,9 +19,10 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="<%= 'active' if params[:controller] == 'blogs' %>"><a href="/">Home</a></li>
+          <% if user_signed_in? %>
+	          <li class="<%= 'active' if params[:controller] == 'posts' %>"><%= link_to "My Blog", posts_path %></li>
+	        <% end -%>
         </ul>
 
         <p class="navbar-text pull-right">
@@ -43,7 +39,7 @@
     </div>
   </nav>
 
-	<div class="container">
+		<div class="container">
 
 		<% if notice %>
 		  <p class="alert alert-success"><%= notice %></p>

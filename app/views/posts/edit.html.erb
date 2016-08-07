@@ -1,6 +1,10 @@
-<h1>Editing Post</h1>
+<div id="post_show">
+	<h1 class="page-title text-center text-capitalize text-primary">
+	  Edit Post
+	</h1>
+	<hr>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+	<%= link_to 'Back', :back, class: "btn btn-success pull-right" %>
+</div>
