@@ -25,6 +25,11 @@ body {
 	}
 }
 
+.modal-content {
+	padding-left: 15%;
+	padding-right: 15%;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'pygments';
