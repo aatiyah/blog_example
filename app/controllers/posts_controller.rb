@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def post_owner
     unless @post.blog.user == current_user
-      flash[:notice] = 'Access denied, you are not the owner of this Post.'
+      flash[alert] = 'Access denied, you are not the owner of this Post.'
       redirect_to @post
      end
   end

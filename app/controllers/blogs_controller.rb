@@ -4,13 +4,13 @@ class BlogsController < ApplicationController
 
   def blog_owner
     unless @blog.user == current_user
-      flash[:notice] = 'Access denied, you are not the owner of this Blog.'
+      flash[:alert] = 'Access denied, you are not the owner of this Blog.'
       redirect_to @blog
      end
   end
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.order("created_at desc")
   end
 
   def show

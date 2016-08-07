@@ -1,22 +1,19 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div id="post_show">
+	<h1 class="page-title text-center text-capitalize text-primary">
+	  <%= @post.title %>
+	</h1>
+	<hr width="50%">
+	<h6 class="text-muted text-center"><em>Last Updated: <%= @post.updated_at.strftime('%B %d, %Y') %></em></h6>
 
-<p>
-  <strong>Content:</strong>
-  <%= markdown(@post.content) %>
-</p>
+	<p><%= markdown(@post.content) %></p>
 
-<p>
-  <strong>Blog:</strong>
-  <%= @post.blog.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.blog.user.name %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+	<hr>
+	<span class="pull-left text-capitalize"><%= link_to "#{@post.blog.user.name}'s Blog", @post.blog, class: "btn btn-primary" %></span>
+	
+	<div class="pull-right">
+		<% if @post.blog.user == current_user %>
+			<span><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-success" %></span>
+			<span><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></span>
+		<% end %>
+	</div>
+</div>

@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+  $(".nav").on('click','li',function(){
+    // remove classname 'active' from all li who already has classname 'active'
+    $(".nav li.active").removeClass("active"); 
+    // adding classname 'active' to current click li 
+    $(this).addClass("active"); 
+  });
+});

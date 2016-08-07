@@ -1,27 +1,23 @@
-<h1>Listing Blogs</h1>
+<div class="text-center" id="blog_index">
+	<h1 class="page-title text-capitalize text-primary">All blogs</h1>
+	<hr width="50%">
+  <% @blogs.each do |blog| %>
+	  <h3 class="page-title text-capitalize">Blog: <%= link_to blog.name, blog %></h3>
+	  <h4 class="text-capitalize"><em>by:</em> <%= blog.user.name %></h4>
+	  <h5 class="muted-text">
+	  	<em><%= blog.created_at.strftime('%A: %B %d, %Y') %></em>
+	  </h5>
+	  <% if blog.user == current_user %>
+		  <span>
+		  	<%= link_to 'Edit', edit_blog_path(blog), class: "btn btn-success" %> 
+		  </span>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.name %></td>
-        <td><%= blog.user.name %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>
+		  <span>
+		  	<%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+		  </span>
+		<% end %>
+		<hr width="40%">
+	<% end %>	
+	
+	<p><%= link_to 'New Blog', new_blog_path, class: "btn btn-primary btn-large" %></p>
+</div>

@@ -1,24 +1,29 @@
-<p>
-  <strong>Name:</strong>
-  <%= @blog.name %>
-</p>
+<div id="blog_show">
+	<div class="text-center">	
+		<h1 class="page-title text-capitalize text-primary"><%= @blog.user.name %>'s blog</h1>
+		<hr width="50%">
+		  
+	  <h4 class="text-capitalize"><em>by:</em> <%= @blog.user.name %></h4>
+	  <h5 class="muted-text">
+	  	<em>Created on: <%= @blog.created_at.strftime('%B %d, %Y') %></em>
+	  </h5>
+		<hr width="40%">
+	</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @blog.user.name %>
-</p>
-
-<% @blog_posts.each do |blog_post| %>
-	<p>
-	  <strong>Blog:</strong>
-	  <%= link_to blog_post.title, blog_post %>
-	</p>
-
-	<p>
-	  <strong>Content:</strong>
-	  <%= blog_post.content %>
-	</p>
-<% end %>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+	<div id="blog_post">
+		<% @blog_posts.each do |blog_post| %>		
+			<div class="row">
+				<div class="jumbotron">
+				  <span>
+				  	<h6 class="muted_text pull-right">
+				  		<em>Last Updated: <%= blog_post.updated_at.strftime('%B %d, %Y') %></em>
+				  	</h6>
+				  </span>
+				  	<h3 class="text-capitalize"><%= blog_post.title %></h3>
+				  <p><%= truncate blog_post.content, length: 200 %></p>
+				  <p><%= link_to "Read More", blog_post %></p>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
