@@ -12,6 +12,7 @@
 
   <tbody>
     <% @posts.each do |post| %>
+    <% if post.blog.user == current_user %>
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
@@ -20,6 +21,7 @@
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end -%>
     <% end %>
   </tbody>
 </table>
