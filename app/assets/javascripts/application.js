@@ -15,5 +15,10 @@
 //= require bootstrap-sprockets
 //= require_tree .
 $( document ).ready(function() {
+  $("#change_green").click(function() {
+  	$('.text-primary').toggleClass('text-primary text-success');
+  	$('.btn-primary').toggleClass('btn-primary btn-success');
+  });
+
   $("#myModal").modal({show:false }); 
 });
