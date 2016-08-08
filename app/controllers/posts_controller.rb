@@ -4,13 +4,13 @@ class PostsController < ApplicationController
 
   def post_owner
     unless @post.blog.user == current_user
-      flash[alert] = 'Access denied, you are not the owner of this Post.'
+      flash[:alert] = 'Access denied, you are not the owner of this Post.'
       redirect_to @post
      end
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.paginate(page: params[:page], per_page: 5)
   end
 
   def show

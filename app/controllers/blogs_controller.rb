@@ -10,13 +10,13 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @blogs = Blog.all.order("created_at desc")
+    @blogs = Blog.all.order("created_at desc").paginate(page: params[:page], per_page: 5)
   end
 
   def show
   	@user = @blog.user
   	@blog = Blog.find(params[:id])
-  	@post = Post.all 
+  	@post = Post.all
   	@blog_posts = []
 
   	@post.each do |post|

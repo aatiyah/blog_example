@@ -14,6 +14,8 @@ gem 'devise'
 gem 'pygments.rb'
 gem 'redcarpet'
 gem 'bootstrap-sass'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'byebug'
