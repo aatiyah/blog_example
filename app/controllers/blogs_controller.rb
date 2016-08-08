@@ -68,9 +68,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  def no_route
-  end
-
   private
     def set_blog
       @blog = Blog.find(params[:id])
