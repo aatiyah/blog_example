@@ -18,6 +18,14 @@ $( document ).ready(function() {
   $("#change_green").click(function() {
   	$('.text-primary').toggleClass('text-primary text-success');
   	$('.btn-primary').toggleClass('btn-primary btn-success');
+  	$('#change_blue').toggleClass('btn-success btn-primary');
+
+  });
+
+  $("#change_blue").click(function() {
+  	$('.text-success').toggleClass('text-success text-primary');
+  	$('.btn-success').toggleClass('btn-success btn-primary');
+  	$('#change_green').toggleClass('btn-primary btn-success');
   });
 
   $("#myModal").modal({show:false }); 
