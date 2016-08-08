@@ -11,7 +11,7 @@
 	  <h3 class="page-title text-capitalize">Blog: <%= link_to blog.name, blog %></h3>
 	  <h4 class="text-capitalize"><em>by:</em> <%= blog.user.name %></h4>
 	  <h5 class="muted-text">
-	  	<em><%= blog.created_at.strftime('%A: %B %d, %Y') %></em>
+	  	<em>Created on: <%= blog.created_at.strftime('%A: %B %d, %Y') %></em>
 	  </h5>
 	  <% if blog.user == current_user %>
 		  <span>
