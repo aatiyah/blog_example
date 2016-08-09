@@ -1,9 +1,7 @@
 <div class="row">
 	<h1 class="text-primary text-capitalize"><%= current_user.name %>'s Blog</h1>
 	<hr>
-	<% if post.blog.user == current_user %>
 		<%= link_to 'New Post', new_post_path, class: "btn btn-success" %>
-	<% end %>
 	<p class="pull-right">Dont like <a href="#" id="change_blue" class="btn btn-primary">blue?</a> Switch to <a href="#" id="change_green" class="btn btn-success">Green!</a></p>
 </div>
 <br>

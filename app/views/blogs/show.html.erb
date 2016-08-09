@@ -3,7 +3,9 @@
   <h5 class="text-muted">
   	<em>Created on: <%= @blog.created_at.strftime('%B %d, %Y') %></em>
   <h5 class="text-muted text-capitalize"><em>by:</em> <%= @blog.user.name %></h5>
-  <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+  <% if @blog.user == current_user %>
+	  <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+	<% end -%>
   </h5>
 	<hr>
 </div>
